@@ -17,6 +17,7 @@ const MainPage = () => {
     const title = document.getElementById("title");
     const temperature = document.getElementById("temperature");
     const condition = document.getElementById("condition");
+    const currentMap = document.getElementById("currentMap");
 
     if (
       firstLocation &&
@@ -24,7 +25,8 @@ const MainPage = () => {
       thirdLocation &&
       title &&
       temperature &&
-      condition
+      condition &&
+      currentMap
     ) {
       const defaultStyling = () => {
         firstLocation.style.background = "white";
@@ -63,9 +65,16 @@ const MainPage = () => {
           setTimeout(() => {
             condition.style.transition = "transform 0.3s ease-in-out";
             condition.style.transform = "translateX(0)";
-          }, 1400);
-        });
+          }, 200);
+        }, 900);
+
+        const appearMap = setTimeout(()=>{
+          currentMap.style.transition = "transform 0.6s ease-in-out";
+          currentMap.style.transform = "translateX(0)";
+        }, 1200)
       };
+
+       
 
       const buttonActive = (buttonName: HTMLElement) => {
         buttonName.style.background = "white";
@@ -204,7 +213,7 @@ const MainPage = () => {
               loading="eager"
               priority={true}
               id="currentMap"
-              className="md:w-[34vw] md:h-[25vw] w-screen h-[220px] md:mt-[3vw] mt-0 mr-[7vw]"
+              className="translate-x-[500%] md:w-[34vw] md:h-[25vw] w-screen h-[220px] md:mt-[3vw] mt-0 mr-[7vw]"
               width={300}
               height={250}
               src={`/maps/${currentMap}.png`}

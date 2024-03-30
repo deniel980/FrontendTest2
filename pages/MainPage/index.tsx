@@ -61,7 +61,6 @@ const MainPage = () => {
           `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&lang=${lang}`
         );
         setWeather(response.data);
-        console.log(weather);
       } catch (error) {
         console.error("Error fetching weather data:", error);
       }
@@ -80,7 +79,7 @@ const MainPage = () => {
   }, [weather, city]);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between p-[5vw] mx-auto">
+    <div className="flex h-screen w-screen flex-col items-center justify-between p-[5vw] mx-auto">
       <div className="z-10 w-full items-center justify-between font-SixCaps md:text-[8vw] text-[20vw] mx-auto">
         <div id="kindaHeader" className="md:flex gap-[10vw]">
           <div id="title">CHECK YOUR WEATHER</div>

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import axios from "axios";
 
 const MainPage = () => {
@@ -85,41 +86,55 @@ const MainPage = () => {
           <div id="title">CHECK YOUR WEATHER</div>
           <div
             id="menu"
-            className="flex md:text-[4vw] text-[10vw] gap-[1vw] mt-[3vw]"
+            className="flex md:text-[4vw] text-[10vw] gap-[1vw] mt-[3vw] z-40"
           >
             <div
               id="firstLocation"
-              className="px-[2.5vw] md:h-[6.4vw] h-[15vw] cursor-pointer hover:scale-105 border-black hover:border-white rounded-sm"
+              className="z-40 px-[2.5vw] md:h-[6.4vw] h-[15vw] cursor-pointer hover:scale-105 border-black hover:border-white rounded-sm"
             >
               LosAngeles
             </div>
             <div
               id="secondLocation"
-              className="px-[2.5vw] md:h-[6.4vw] h-[15vw] cursor-pointer hover:scale-105 border-black hover:border-white rounded-sm"
+              className="z-40 px-[2.5vw] md:h-[6.4vw] h-[15vw] cursor-pointer hover:scale-105 border-black hover:border-white rounded-sm"
             >
               NewOrleans
             </div>
             <div
               id="thirdLocation"
-              className="px-[2.5vw] md:h-[6.4vw] h-[15vw] cursor-pointer hover:scale-105 border-black hover:border-white rounded-sm"
+              className="z-40 px-[2.5vw] md:h-[6.4vw] h-[15vw] cursor-pointer hover:scale-105 border-black hover:border-white rounded-sm"
             >
               SanDiego
             </div>
           </div>
         </div>
-        <div id="bodyPart" className="md:flex md:gap-[4.1vw] mt-[30vw] md:mt-0">
+        <div className="md:flex justify-between">
           <div
-            id="temperature"
-            className="h-[22vw] w-[22vw] text-[60vw] md:text-[23vw]"
+            id="bodyPart"
+            className="md:flex md:gap-[4.1vw] mt-[-12vw] md:mt-0"
           >
-            {weather ? <div>{weather.current.temp_c}°C</div> : "..."}
+            <div
+              id="temperature"
+              className="h-[22vw] w-[22vw] text-[60vw] md:text-[23vw]"
+            >
+              {weather ? <div>{weather.current.temp_c}°C</div> : "..."}
+            </div>
+            <div id="condition" className="mt-[52vw] md:mt-[23.5vw] md:text-[3vw] text-[7vw]">
+              {weather ? (
+                <div>, &nbsp; {weather.current.condition.text}</div>
+              ) : (
+                "loading..."
+              )}
+            </div>
           </div>
-          <div id="condition" className="mt-[52vw] md:mt-[19.5vw] text-[7vw]">
-            {weather ? (
-              <div>, &nbsp; {weather.current.condition.text}</div>
-            ) : (
-              "loading..."
-            )}
+          <div id="maps">
+            <Image
+            className="md:w-[34vw] md:h-[25vw] w-screen h-[220px] md:mt-[3vw] mt-0 mr-[5vw]"
+              width={300}
+              height={250}
+              src={"/maps/LosAngeles.png"}
+              alt="map"
+            ></Image>
           </div>
         </div>
       </div>

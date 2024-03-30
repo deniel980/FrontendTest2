@@ -58,7 +58,10 @@ const MainPage = () => {
           secondLocation.style.zIndex = "40";
           firstLocation.style.zIndex = "40";
         }, 1000);
+        appearLowerPart();
+      };
 
+      const appearLowerPart = () => {
         const appearInfos = setTimeout(() => {
           temperature.style.transition = "transform 0.3s ease-in-out";
           temperature.style.transform = "translateX(0)";
@@ -68,13 +71,26 @@ const MainPage = () => {
           }, 200);
         }, 900);
 
-        const appearMap = setTimeout(()=>{
+        const appearMap = setTimeout(() => {
           currentMap.style.transition = "transform 0.6s ease-in-out";
           currentMap.style.transform = "translateX(0)";
-        }, 1200)
+        }, 950);
       };
 
-       
+      const disappearLowerPart = () => {
+        const disappearInfos = setTimeout(() => {
+          temperature.style.transition = "transform 0.3s ease-in-out";
+          temperature.style.transform = "translateX(-400%)";
+          setTimeout(() => {
+            condition.style.transition = "transform 0.3s ease-in-out";
+            condition.style.transform = "translateX(-700%)";
+          }, 50);
+        });
+        const disappearMap = setTimeout(() => {
+          currentMap.style.transition = "transform 0.6s ease-in-out";
+          currentMap.style.transform = "translateX(500%)";
+        });
+      };
 
       const buttonActive = (buttonName: HTMLElement) => {
         buttonName.style.background = "white";
@@ -94,6 +110,8 @@ const MainPage = () => {
         buttonActive(firstLocation);
         buttonInactive(secondLocation);
         buttonInactive(thirdLocation);
+        disappearLowerPart();
+        appearLowerPart();
       });
       secondLocation.addEventListener("click", () => {
         setCity("New Orleans");
@@ -105,6 +123,8 @@ const MainPage = () => {
         buttonActive(secondLocation);
         buttonInactive(thirdLocation);
         buttonInactive(firstLocation);
+        disappearLowerPart();
+        appearLowerPart();
       });
       thirdLocation.addEventListener("click", () => {
         setCity("San Diego");
@@ -116,6 +136,8 @@ const MainPage = () => {
         buttonInactive(firstLocation);
         buttonInactive(secondLocation);
         buttonActive(thirdLocation);
+        disappearLowerPart();
+        appearLowerPart();
       });
 
       defaultStyling();
@@ -189,7 +211,7 @@ const MainPage = () => {
           >
             <div
               id="temperature"
-              className="translate-x-[-400%] h-[22vw] w-[22vw] text-[60vw] md:text-[23vw]"
+              className="translate-x-[-400%] z-40 bg-black h-[22vw] w-[22vw] text-[60vw] md:text-[23vw]"
             >
               {weather && !loading ? (
                 <div>{weather.current.temp_c}°C</div>

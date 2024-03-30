@@ -183,12 +183,12 @@ const MainPage = () => {
     <div className="flex md:h-screen md:w-screen h-screen w-screen flex-col items-center justify-between p-[5vw] mx-auto overflow-hidden">
       <div className="z-10 w-full items-center justify-between font-SixCaps md:text-[8vw] text-[20vw] mx-auto">
         <div id="kindaHeader" className="md:flex gap-[10vw]">
-          <div id="title" className="translate-x-[-300%] bg-black">
+          <div id="title" className="translate-x-[-300%]">
             CHECK YOUR WEATHER
           </div>
           <div
             id="menu"
-            className="flex md:text-[4vw] text-[10vw] gap-[1vw] mt-[3vw] z-40"
+            className="flex md:text-[4vw] text-[10vw] gap-[1vw] mt-[3vw] z-40 text-white"
           >
             <div
               id="firstLocation"

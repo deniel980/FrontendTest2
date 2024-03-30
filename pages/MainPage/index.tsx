@@ -7,6 +7,7 @@ const MainPage = () => {
   const [weather, setWeather] = useState<any>(null);
   const [city, setCity] = useState("Los Angeles");
   const [currentMap, setMap] = useState("LosAngeles");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     //here we are creating animations
@@ -52,6 +53,10 @@ const MainPage = () => {
       firstLocation.addEventListener("click", () => {
         setCity("Los Angeles");
         setMap("LosAngeles");
+        setLoading(true)
+        setTimeout(()=>{
+          setLoading(false)
+        },300)
         buttonActive(firstLocation);
         buttonInactive(secondLocation);
         buttonInactive(thirdLocation);
@@ -59,6 +64,10 @@ const MainPage = () => {
       secondLocation.addEventListener("click", () => {
         setCity("New Orleans");
         setMap("NewOrleans");
+        setLoading(true)
+        setTimeout(()=>{
+          setLoading(false)
+        },300)
         buttonActive(secondLocation);
         buttonInactive(thirdLocation);
         buttonInactive(firstLocation);
@@ -66,6 +75,10 @@ const MainPage = () => {
       thirdLocation.addEventListener("click", () => {
         setCity("San Diego");
         setMap("SanDiego");
+        setLoading(true)
+        setTimeout(()=>{
+          setLoading(false)
+        },300)
         buttonInactive(firstLocation);
         buttonInactive(secondLocation);
         buttonActive(thirdLocation);
@@ -144,13 +157,17 @@ const MainPage = () => {
               id="temperature"
               className="h-[22vw] w-[22vw] text-[60vw] md:text-[23vw]"
             >
-              {weather ? <div>{weather.current.temp_c}°C</div> : "..."}
+              {weather && !loading ? (
+                <div>{weather.current.temp_c}°C</div>
+              ) : (
+                "..."
+              )}
             </div>
             <div
               id="condition"
               className="mt-[52vw] md:mt-[22.5vw] md:text-[4vw] text-[7vw] overflow-hidden"
             >
-              {weather ? (
+              {weather && !loading ? (
                 <div>, &nbsp; {weather.current.condition.text}</div>
               ) : (
                 "loading..."

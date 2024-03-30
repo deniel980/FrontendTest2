@@ -188,7 +188,7 @@ const MainPage = () => {
           </div>
           <div
             id="menu"
-            className="flex bg-black md:text-[4vw] text-[10vw] gap-[1vw] mt-[3vw] z-40"
+            className="flex md:text-[4vw] text-[10vw] gap-[1vw] mt-[3vw] z-40"
           >
             <div
               id="firstLocation"
@@ -217,7 +217,7 @@ const MainPage = () => {
           >
             <div
               id="temperature"
-              className="translate-x-[-400%] z-40 bg-black h-[22vw] w-[22vw] text-[60vw] md:text-[23vw]"
+              className="translate-x-[-400%] z-40 h-[22vw] w-[22vw] text-[60vw] md:text-[23vw]"
             >
               {weather ? (
                 <div>{weather.current.temp_c}°C</div>

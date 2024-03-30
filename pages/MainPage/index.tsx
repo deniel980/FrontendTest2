@@ -13,14 +13,33 @@ const MainPage = () => {
     const firstLocation = document.getElementById("firstLocation");
     const secondLocation = document.getElementById("secondLocation");
     const thirdLocation = document.getElementById("thirdLocation");
+    const title = document.getElementById("title");
 
-    if (firstLocation && secondLocation && thirdLocation && currentMap) {
+    if (firstLocation && secondLocation && thirdLocation && title) {
       const defaultStyling = () => {
         firstLocation.style.background = "white";
         firstLocation.style.color = "black";
+
+        elementsAppear();
       };
 
-      defaultStyling();
+      const elementsAppear = () => {
+        title.style.transition = "transform 0.5s ease-in-out";
+        title.style.transform = "translateX(0)";
+        title.style.zIndex = "90";
+        const appearCities = setTimeout(() => {
+          firstLocation.style.transition = "transform 0.3s ease-in-out";
+          firstLocation.style.transform = "translateX(0)";
+
+          secondLocation.style.transition = "transform 0.5s ease-in-out";
+          secondLocation.style.transform = "translateX(0)";
+
+          thirdLocation.style.transition = "transform 0.7s ease-in-out";
+          thirdLocation.style.transform = "translateX(0)";
+
+          title.style.zIndex = "10";
+        }, 300);
+      };
 
       const buttonActive = (buttonName: HTMLElement) => {
         buttonName.style.background = "white";
@@ -51,6 +70,8 @@ const MainPage = () => {
         buttonInactive(secondLocation);
         buttonActive(thirdLocation);
       });
+
+      defaultStyling();
     } else {
       console.log("dependencies missing");
     }
@@ -87,26 +108,28 @@ const MainPage = () => {
     <div className="flex h-screen w-screen flex-col items-center justify-between p-[5vw] mx-auto">
       <div className="z-10 w-full items-center justify-between font-SixCaps md:text-[8vw] text-[20vw] mx-auto">
         <div id="kindaHeader" className="md:flex gap-[10vw]">
-          <div id="title">CHECK YOUR WEATHER</div>
+          <div id="title" className="translate-x-[-300%] bg-black">
+            CHECK YOUR WEATHER
+          </div>
           <div
             id="menu"
             className="flex md:text-[4vw] text-[10vw] gap-[1vw] mt-[3vw] z-40"
           >
             <div
               id="firstLocation"
-              className="z-40 px-[2.5vw] md:h-[6.4vw] h-[15vw] cursor-pointer hover:scale-105 border-black hover:border-white rounded-sm"
+              className="translate-x-[-1000%] z-40 px-[2.5vw] md:h-[6.4vw] h-[15vw] cursor-pointer hover:scale-105 border-black hover:border-white rounded-sm"
             >
               LosAngeles
             </div>
             <div
               id="secondLocation"
-              className="z-40 px-[2.5vw] md:h-[6.4vw] h-[15vw] cursor-pointer hover:scale-105 border-black hover:border-white rounded-sm"
+              className="translate-x-[-1000%] z-40 px-[2.5vw] md:h-[6.4vw] h-[15vw] cursor-pointer hover:scale-105 border-black hover:border-white rounded-sm"
             >
               NewOrleans
             </div>
             <div
               id="thirdLocation"
-              className="z-40 px-[2.5vw] md:h-[6.4vw] h-[15vw] cursor-pointer hover:scale-105 border-black hover:border-white rounded-sm"
+              className="translate-x-[-1000%] z-40 px-[2.5vw] md:h-[6.4vw] h-[15vw] cursor-pointer hover:scale-105 border-black hover:border-white rounded-sm"
             >
               SanDiego
             </div>

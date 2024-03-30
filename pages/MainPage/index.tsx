@@ -102,7 +102,9 @@ const MainPage = () => {
       };
       firstLocation.addEventListener("click", () => {
         setCity("Los Angeles");
-        setMap("LosAngeles");
+        setTimeout(() => {
+          setMap("LosAngeles");
+        }, 300);
         setLoading(true);
         setTimeout(() => {
           setLoading(false);
@@ -115,7 +117,9 @@ const MainPage = () => {
       });
       secondLocation.addEventListener("click", () => {
         setCity("New Orleans");
-        setMap("NewOrleans");
+        setTimeout(() => {
+          setMap("NewOrleans");
+        }, 300);
         setLoading(true);
         setTimeout(() => {
           setLoading(false);
@@ -128,7 +132,9 @@ const MainPage = () => {
       });
       thirdLocation.addEventListener("click", () => {
         setCity("San Diego");
-        setMap("SanDiego");
+        setTimeout(() => {
+          setMap("SanDiego");
+        }, 300);
         setLoading(true);
         setTimeout(() => {
           setLoading(false);

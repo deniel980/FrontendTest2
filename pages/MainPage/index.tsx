@@ -180,7 +180,7 @@ const MainPage = () => {
   }, [weather, city]);
 
   return (
-    <div className="flex md:h-screen md:w-screen h-screen w-screen flex-col items-center justify-between p-[5vw] mx-auto overflow-hidden">
+    <div className="flex md:h-screen md:w-screen h-screen w-screen flex-col items-center justify-between px-[3vw] py-[0vw] mx-auto overflow-hidden">
       <div className="z-10 w-full items-center justify-between font-SixCaps md:text-[8vw] text-[20vw] mx-auto">
         <div id="kindaHeader" className="md:flex gap-[10vw]">
           <div id="title" className="translate-x-[-300%]">
@@ -213,11 +213,11 @@ const MainPage = () => {
         <div className="md:flex justify-between">
           <div
             id="bodyPart"
-            className="md:flex justify-around md:gap-[4.1vw] mt-[-12vw] md:mt-0"
+            className="md:flex md:gap-[4.1vw] mt-[-12vw] md:mt-0"
           >
             <div
               id="temperature"
-              className="translate-x-[-400%] z-40 h-[22vw] w-[22vw] text-[60vw] md:text-[23vw]"
+              className="translate-x-[-400%] z-40 h-[22vw] w-[22vw] text-[52vw] md:text-[23vw]"
             >
               {weather ? (
                 <div>{weather.current.temp_c}°C</div>
@@ -227,7 +227,7 @@ const MainPage = () => {
             </div>
             <div
               id="condition"
-              className="translate-x-[-700%] mt-[52vw] md:mt-[22.5vw] md:text-[4vw] text-[7vw] overflow-hidden"
+              className="translate-x-[-700%] mt-[42vw] md:mt-[22.5vw] md:text-[4vw] text-[7vw] overflow-hidden"
             >
               {weather ? (
                 <div>, &nbsp; {weather.current.condition.text}</div>

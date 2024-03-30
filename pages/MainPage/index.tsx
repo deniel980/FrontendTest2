@@ -58,7 +58,7 @@ const MainPage = () => {
         const apiKey = "d0b7abc2b79441ef8e993054241303";
         const lang = "de"; // Language parameter for German
         const response = await axios.get(
-          `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&lang=${lang}`
+          `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&lang=${lang}`
         );
         setWeather(response.data);
         console.log(weather);

@@ -15,8 +15,17 @@ const MainPage = () => {
     const secondLocation = document.getElementById("secondLocation");
     const thirdLocation = document.getElementById("thirdLocation");
     const title = document.getElementById("title");
+    const temperature = document.getElementById("temperature");
+    const condition = document.getElementById("condition");
 
-    if (firstLocation && secondLocation && thirdLocation && title) {
+    if (
+      firstLocation &&
+      secondLocation &&
+      thirdLocation &&
+      title &&
+      temperature &&
+      condition
+    ) {
       const defaultStyling = () => {
         firstLocation.style.background = "white";
         firstLocation.style.color = "black";
@@ -25,9 +34,13 @@ const MainPage = () => {
       };
 
       const elementsAppear = () => {
+        title.style.zIndex = "90";
+        secondLocation.style.zIndex = "50";
+
+        firstLocation.style.zIndex = "60";
+
         title.style.transition = "transform 0.5s ease-in-out";
         title.style.transform = "translateX(0)";
-        title.style.zIndex = "90";
         const appearCities = setTimeout(() => {
           firstLocation.style.transition = "transform 0.3s ease-in-out";
           firstLocation.style.transform = "translateX(0)";
@@ -37,9 +50,21 @@ const MainPage = () => {
 
           thirdLocation.style.transition = "transform 0.7s ease-in-out";
           thirdLocation.style.transform = "translateX(0)";
-
-          title.style.zIndex = "10";
         }, 300);
+        setTimeout(() => {
+          title.style.zIndex = "10";
+          secondLocation.style.zIndex = "40";
+          firstLocation.style.zIndex = "40";
+        }, 1000);
+
+        const appearInfos = setTimeout(() => {
+          temperature.style.transition = "transform 0.3s ease-in-out";
+          temperature.style.transform = "translateX(0)";
+          setTimeout(() => {
+            condition.style.transition = "transform 0.3s ease-in-out";
+            condition.style.transform = "translateX(0)";
+          }, 1400);
+        });
       };
 
       const buttonActive = (buttonName: HTMLElement) => {
@@ -53,10 +78,10 @@ const MainPage = () => {
       firstLocation.addEventListener("click", () => {
         setCity("Los Angeles");
         setMap("LosAngeles");
-        setLoading(true)
-        setTimeout(()=>{
-          setLoading(false)
-        },300)
+        setLoading(true);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
         buttonActive(firstLocation);
         buttonInactive(secondLocation);
         buttonInactive(thirdLocation);
@@ -64,10 +89,10 @@ const MainPage = () => {
       secondLocation.addEventListener("click", () => {
         setCity("New Orleans");
         setMap("NewOrleans");
-        setLoading(true)
-        setTimeout(()=>{
-          setLoading(false)
-        },300)
+        setLoading(true);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
         buttonActive(secondLocation);
         buttonInactive(thirdLocation);
         buttonInactive(firstLocation);
@@ -75,10 +100,10 @@ const MainPage = () => {
       thirdLocation.addEventListener("click", () => {
         setCity("San Diego");
         setMap("SanDiego");
-        setLoading(true)
-        setTimeout(()=>{
-          setLoading(false)
-        },300)
+        setLoading(true);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
         buttonInactive(firstLocation);
         buttonInactive(secondLocation);
         buttonActive(thirdLocation);
@@ -126,23 +151,23 @@ const MainPage = () => {
           </div>
           <div
             id="menu"
-            className="flex md:text-[4vw] text-[10vw] gap-[1vw] mt-[3vw] z-40"
+            className="flex bg-black md:text-[4vw] text-[10vw] gap-[1vw] mt-[3vw] z-40"
           >
             <div
               id="firstLocation"
-              className="translate-x-[-1000%] z-40 px-[2.5vw] md:h-[6.4vw] h-[15vw] cursor-pointer hover:scale-105 border-black hover:border-white rounded-sm"
+              className="translate-x-[-1000%] z-40 bg-black px-[2.5vw] md:h-[6.4vw] h-[15vw] cursor-pointer hover:scale-105 border-black hover:border-white rounded-sm"
             >
               LosAngeles
             </div>
             <div
               id="secondLocation"
-              className="translate-x-[-1000%] z-40 px-[2.5vw] md:h-[6.4vw] h-[15vw] cursor-pointer hover:scale-105 border-black hover:border-white rounded-sm"
+              className="translate-x-[-1000%] z-40 bg-black px-[2.5vw] md:h-[6.4vw] h-[15vw] cursor-pointer hover:scale-105 border-black hover:border-white rounded-sm"
             >
               NewOrleans
             </div>
             <div
               id="thirdLocation"
-              className="translate-x-[-1000%] z-40 px-[2.5vw] md:h-[6.4vw] h-[15vw] cursor-pointer hover:scale-105 border-black hover:border-white rounded-sm"
+              className="translate-x-[-1000%] z-40 bg-black px-[2.5vw] md:h-[6.4vw] h-[15vw] cursor-pointer hover:scale-105 border-black hover:border-white rounded-sm"
             >
               SanDiego
             </div>
@@ -155,7 +180,7 @@ const MainPage = () => {
           >
             <div
               id="temperature"
-              className="h-[22vw] w-[22vw] text-[60vw] md:text-[23vw]"
+              className="translate-x-[-400%] h-[22vw] w-[22vw] text-[60vw] md:text-[23vw]"
             >
               {weather && !loading ? (
                 <div>{weather.current.temp_c}°C</div>
@@ -165,7 +190,7 @@ const MainPage = () => {
             </div>
             <div
               id="condition"
-              className="mt-[52vw] md:mt-[22.5vw] md:text-[4vw] text-[7vw] overflow-hidden"
+              className="translate-x-[-700%] mt-[52vw] md:mt-[22.5vw] md:text-[4vw] text-[7vw] overflow-hidden"
             >
               {weather && !loading ? (
                 <div>, &nbsp; {weather.current.condition.text}</div>

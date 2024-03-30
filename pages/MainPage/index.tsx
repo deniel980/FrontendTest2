@@ -6,6 +6,7 @@ import axios from "axios";
 const MainPage = () => {
   const [weather, setWeather] = useState<any>(null);
   const [city, setCity] = useState("Los Angeles");
+  const [currentMap, setMap] = useState("LosAngeles");
 
   useEffect(() => {
     //here we are creating animations
@@ -13,7 +14,7 @@ const MainPage = () => {
     const secondLocation = document.getElementById("secondLocation");
     const thirdLocation = document.getElementById("thirdLocation");
 
-    if (firstLocation && secondLocation && thirdLocation) {
+    if (firstLocation && secondLocation && thirdLocation && currentMap) {
       const defaultStyling = () => {
         firstLocation.style.background = "white";
         firstLocation.style.color = "black";
@@ -31,18 +32,21 @@ const MainPage = () => {
       };
       firstLocation.addEventListener("click", () => {
         setCity("Los Angeles");
+        setMap("LosAngeles");
         buttonActive(firstLocation);
         buttonInactive(secondLocation);
         buttonInactive(thirdLocation);
       });
       secondLocation.addEventListener("click", () => {
         setCity("New Orleans");
+        setMap("NewOrleans");
         buttonActive(secondLocation);
         buttonInactive(thirdLocation);
         buttonInactive(firstLocation);
       });
       thirdLocation.addEventListener("click", () => {
         setCity("San Diego");
+        setMap("SanDiego");
         buttonInactive(firstLocation);
         buttonInactive(secondLocation);
         buttonActive(thirdLocation);
@@ -111,7 +115,7 @@ const MainPage = () => {
         <div className="md:flex justify-between">
           <div
             id="bodyPart"
-            className="md:flex md:gap-[4.1vw] mt-[-12vw] md:mt-0"
+            className="md:flex justify-around md:gap-[4.1vw] mt-[-12vw] md:mt-0"
           >
             <div
               id="temperature"
@@ -119,7 +123,10 @@ const MainPage = () => {
             >
               {weather ? <div>{weather.current.temp_c}°C</div> : "..."}
             </div>
-            <div id="condition" className="mt-[52vw] md:mt-[23.5vw] md:text-[3vw] text-[7vw]">
+            <div
+              id="condition"
+              className="mt-[52vw] md:mt-[22.5vw] md:text-[4vw] text-[7vw] overflow-hidden"
+            >
               {weather ? (
                 <div>, &nbsp; {weather.current.condition.text}</div>
               ) : (
@@ -129,10 +136,11 @@ const MainPage = () => {
           </div>
           <div id="maps">
             <Image
-            className="md:w-[34vw] md:h-[25vw] w-screen h-[220px] md:mt-[3vw] mt-0 mr-[5vw]"
+              id="currentMap"
+              className="md:w-[34vw] md:h-[25vw] w-screen h-[220px] md:mt-[3vw] mt-0 mr-[7vw]"
               width={300}
               height={250}
-              src={"/maps/LosAngeles.png"}
+              src={`/maps/${currentMap}.png`}
               alt="map"
             ></Image>
           </div>

@@ -219,7 +219,7 @@ const MainPage = () => {
               id="temperature"
               className="translate-x-[-400%] z-40 bg-black h-[22vw] w-[22vw] text-[60vw] md:text-[23vw]"
             >
-              {weather && !loading ? (
+              {weather ? (
                 <div>{weather.current.temp_c}°C</div>
               ) : (
                 "..."
@@ -229,7 +229,7 @@ const MainPage = () => {
               id="condition"
               className="translate-x-[-700%] mt-[52vw] md:mt-[22.5vw] md:text-[4vw] text-[7vw] overflow-hidden"
             >
-              {weather && !loading ? (
+              {weather ? (
                 <div>, &nbsp; {weather.current.condition.text}</div>
               ) : (
                 "loading..."

@@ -136,6 +136,8 @@ const MainPage = () => {
           </div>
           <div id="maps">
             <Image
+              loading="eager"
+              priority={true}
               id="currentMap"
               className="md:w-[34vw] md:h-[25vw] w-screen h-[220px] md:mt-[3vw] mt-0 mr-[7vw]"
               width={300}

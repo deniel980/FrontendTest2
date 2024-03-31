@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import axios from "axios";
-import SEO from "@/components/organisms/SEO";
+import Head from "next/head";
 
 const MainPage = () => {
   const [weather, setWeather] = useState<any>(null);
@@ -182,12 +182,20 @@ const MainPage = () => {
 
   return (
     <div className="flex md:h-screen md:w-screen h-[88vh] w-screen flex-col items-center justify-between px-[3vw] py-[0vw] mx-auto overflow-hidden">
-      <SEO
-        title="BestWeather"
-        description="Advanced modern page to get current weather in cool cities"
-        name="Daniel Weiner"
-        type="weather app"
-      />
+      <Head>
+        <title>Cool Title</title>
+        <meta
+          name="description"
+          content="Checkout the best Weather"
+          key="desc"
+        />
+        <meta property="og:title" content="BestWeather" />
+        <meta
+          property="og:description"
+          content="Check out the best Weather App"
+        />
+        <meta property="og:image" content="" />
+      </Head>
       <div className="z-10 w-full items-center justify-between font-SixCaps md:text-[8vw] text-[20vw] mx-auto">
         <div id="kindaHeader" className="md:flex gap-[10vw]">
           <div id="title" className="translate-x-[-300%]">

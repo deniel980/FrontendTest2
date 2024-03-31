@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import axios from "axios";
+import SEO from "@/components/organisms/SEO";
 
 const MainPage = () => {
   const [weather, setWeather] = useState<any>(null);
@@ -181,6 +182,12 @@ const MainPage = () => {
 
   return (
     <div className="flex md:h-screen md:w-screen h-[88vh] w-screen flex-col items-center justify-between px-[3vw] py-[0vw] mx-auto overflow-hidden">
+      <SEO
+        title="BestWeather"
+        description="Advanced modern page to get current weather in cool cities"
+        name="Daniel Weiner"
+        type="weather app"
+      />
       <div className="z-10 w-full items-center justify-between font-SixCaps md:text-[8vw] text-[20vw] mx-auto">
         <div id="kindaHeader" className="md:flex gap-[10vw]">
           <div id="title" className="translate-x-[-300%]">
@@ -219,11 +226,7 @@ const MainPage = () => {
               id="temperature"
               className="translate-x-[-400%] z-40 h-[22vw] w-[22vw] text-[52vw] md:text-[23vw]"
             >
-              {weather ? (
-                <div>{weather.current.temp_c}°C</div>
-              ) : (
-                "..."
-              )}
+              {weather ? <div>{weather.current.temp_c}°C</div> : "..."}
             </div>
             <div
               id="condition"
